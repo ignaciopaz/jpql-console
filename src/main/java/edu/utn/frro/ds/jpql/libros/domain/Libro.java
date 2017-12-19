@@ -15,14 +15,7 @@ import lombok.ToString;
 @Data @ToString(includeFieldNames=true)
 @Entity
 public class Libro {
-	public Libro() {}
-	public Libro(String isbn, String titulo, Double precio, Editorial editorial, Autor... autores) {
-		this.isbn=isbn;
-		this.titulo=titulo;
-		this.precio=precio;
-		this.editorial=editorial;
-		this.autores= Arrays.asList(autores);
-	}
+	
 
 	@Id @GeneratedValue
 	private Integer id;
@@ -32,10 +25,18 @@ public class Libro {
     @ManyToOne
     private Editorial editorial;
     
-    @ManyToMany
+    @ManyToMany @JoinTable(name="libro_autor")
     private List<Autor> autores;
 	private Double precio;
     
+	public Libro() {}
+	public Libro(String isbn, String titulo, Double precio, Editorial editorial) {
+		this.isbn=isbn;
+		this.titulo=titulo;
+		this.precio=precio;
+		this.editorial=editorial;
+		this.autores= new ArrayList<Autor>();
+	}
     public void agregarAutor(Autor autor) {
     	autores.add(autor);
     }

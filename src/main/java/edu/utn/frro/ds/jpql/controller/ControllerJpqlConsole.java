@@ -49,7 +49,11 @@ public class ControllerJpqlConsole {
 		    List<String> values = new ArrayList<String>();
 		    for (Field f : clazz.getDeclaredFields()) {
 		    	f.setAccessible(true);
-		    	String fieldValue = f.get(x).toString();
+		    	String fieldValue = null;
+		    	Object fieldValueObj = f.get(x);
+		    	if (fieldValueObj != null) {
+		    		fieldValue = fieldValueObj.toString();
+		    	}
 		    	if (headerRow) {
 		    		headers.add(f.getName());
 		    	}

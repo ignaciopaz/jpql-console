@@ -1,5 +1,6 @@
 package edu.utn.frro.ds.jpql.libros.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -14,17 +15,18 @@ import lombok.ToString;
 @Data @ToString(includeFieldNames=true, exclude="libros")
 @Entity
 public class Autor {
-	public Autor() {}
-    public Autor(String nombre, String apellido) {
-		this.apellido=apellido;
-		this.nombre=nombre;
-	}
-
 	@Id @GeneratedValue
     private Integer id;
     private String nombre;
     private String apellido;
 
-    @ManyToMany @JoinTable(name="autores_libros")
+    @ManyToMany(mappedBy = "autores")
     private List<Libro> libros;
+    
+    public Autor() {}
+    public Autor(String nombre, String apellido) {
+		this.apellido=apellido;
+		this.nombre=nombre;
+		libros = new ArrayList<Libro>();
+	}
 }

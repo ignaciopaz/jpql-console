@@ -1,0 +1,9 @@
+edu\utn\frro\ds\jpql\libros\dao\LibroDao.class
+edu\utn\frro\ds\jpql\libros\domain\Editorial.class
+edu\utn\frro\ds\jpql\controller\ControllerJpqlConsole.class
+edu\utn\frro\ds\jpql\WebAppConfig.class
+edu\utn\frro\ds\jpql\libros\dao\AutorDao.class
+edu\utn\frro\ds\jpql\Application.class
+edu\utn\frro\ds\jpql\libros\domain\Autor.class
+edu\utn\frro\ds\jpql\libros\domain\Libro.class
+edu\utn\frro\ds\jpql\libros\dao\EditorialDao.class
