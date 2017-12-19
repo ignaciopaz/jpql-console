@@ -19,8 +19,14 @@
 	
 	<div class="container">
 	<h1>JPQL Console</h1> 
+	
     <form action="#" id="form" th:action="@{/jpql/console}" method="post" class="form-horizontal">    	
-		<div class="container">	  
+		<div class="container">	 
+		<button class="btn" data-toggle="collapse" data-target="#demo">Ver Diagrama de Clases</button>
+
+		<div id="demo" class="collapse">
+			<img src="/img/libros-dcd.jpg" class="img-responsive" alt="Libros DCD"/>
+		</div> 
 		 <div class="form-group">
 		  <label for="jpql">Consulta JPQL:</label>
 		  <textarea class="form-control" th:text="${jpql}" rows="5" cols="100" id="jpql" name="jpql"></textarea>
@@ -28,8 +34,11 @@
 		</div>	 
 		</div>
     </form>
-    <div th:if="${exception != null}" class="alert alert-warning">
+      <div th:if="${exception != null}" class="alert alert-danger">
 			<span th:text="${exception.message}"></span>
+	  </div>
+	  <div th:if="${results?.empty}" class="alert alert-warning">
+			No hay resultados.
 	  </div>
 	  <div>
 		  <div class="form-group">

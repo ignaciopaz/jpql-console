@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<class-diagram version="1.2.2" icons="true" automaticImage="JPEG" always-add-relationships="false" 
+<class-diagram version="1.1.14" icons="true" automaticImage="JPEG" always-add-relationships="false" 
   generalizations="true" realizations="true" associations="true" dependencies="false" nesting-relationships="true" 
   router="FAN">  
   <class id="1" language="java" name="edu.utn.frro.ds.jpql.libros.domain.Autor" project="jpql" 
     file="/jpql/src/main/java/edu/utn/frro/ds/jpql/libros/domain/Autor.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="99" y="245"/>    
+    <position height="-1" width="-1" x="148" y="335"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -13,7 +13,7 @@
   </class>  
   <class id="2" language="java" name="edu.utn.frro.ds.jpql.libros.domain.Editorial" project="jpql" 
     file="/jpql/src/main/java/edu/utn/frro/ds/jpql/libros/domain/Editorial.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="687" y="249"/>    
+    <position height="-1" width="-1" x="928" y="87"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -22,35 +22,76 @@
   </class>  
   <class id="3" language="java" name="edu.utn.frro.ds.jpql.libros.domain.Libro" project="jpql" 
     file="/jpql/src/main/java/edu/utn/frro/ds/jpql/libros/domain/Libro.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="393" y="242"/>    
+    <position height="-1" width="-1" x="525" y="107"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <association id="4">    
+  <class id="4" language="java" name="edu.utn.frro.ds.jpql.libros.domain.Categoria" project="jpql" 
+    file="/jpql/src/main/java/edu/utn/frro/ds/jpql/libros/domain/Categoria.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="95" y="94"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <association id="5">    
     <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="5" name="autores"/>      
-      <multiplicity id="6" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="1" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="7">    
-    <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="8" name="editorial"/>      
-      <multiplicity id="9" minimum="0" maximum="1"/>    
+      <attribute id="6" name="editorial"/>      
+      <multiplicity id="7" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="2" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="10">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="11" name="libros"/>      
-      <multiplicity id="12" minimum="0" maximum="2147483647"/>    
+  <association id="8">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="9" name="libros"/>      
+      <multiplicity id="10" minimum="0" maximum="2147483647"/>    
     </end>    
     <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="11">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="12" name="libros"/>      
+      <multiplicity id="13" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="14">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="15" name="parentCategoria"/>      
+      <multiplicity id="16" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="17">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="18" name="libros"/>      
+      <multiplicity id="19" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="20">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="21" name="autores"/>      
+      <multiplicity id="22" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="23">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="24" name="categorias"/>      
+      <multiplicity id="25" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 

@@ -12,7 +12,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import lombok.Data;
 import lombok.ToString;
-@Data @ToString(includeFieldNames=true)
+@ToString(includeFieldNames=true)
 @Entity
 public class Libro {
 	
@@ -28,13 +28,16 @@ public class Libro {
     @ManyToMany @JoinTable(name="libro_autor")
     private List<Autor> autores;
 	private Double precio;
+	@ManyToMany @JoinTable(name="libro_categoria")
+	private List<Categoria> categorias;
     
 	public Libro() {}
-	public Libro(String isbn, String titulo, Double precio, Editorial editorial) {
+	public Libro(String isbn, String titulo, Double precio, Editorial editorial, Categoria... categorias) {
 		this.isbn=isbn;
 		this.titulo=titulo;
 		this.precio=precio;
 		this.editorial=editorial;
+		this.categorias=Arrays.asList(categorias);
 		this.autores= new ArrayList<Autor>();
 	}
     public void agregarAutor(Autor autor) {

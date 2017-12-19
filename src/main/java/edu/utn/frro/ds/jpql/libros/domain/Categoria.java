@@ -9,29 +9,29 @@ import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import lombok.Data;
 import lombok.ToString;
 @ToString(includeFieldNames=true, exclude="libros")
 @Entity
-public class Autor {
+public class Categoria {
 	@Id @GeneratedValue
     private Integer id;
-    private String nombre;
-    private String apellido;
-    private String bio;
+    private String descripcion;
 
-    @ManyToMany(mappedBy = "autores")
+    @ManyToMany(mappedBy="categorias")
     private List<Libro> libros;
     
-    public Autor() {}
-    public Autor(String nombre, String apellido, String bio) {
-		this.apellido=apellido;
-		this.nombre=nombre;
-		if (bio!=null && bio.length()>200){
-			bio = bio.substring(0, 200) + "...";
-		}
-		this.bio=bio;
+    @ManyToOne
+	private Categoria parentCategoria;
+    
+    public Categoria() {}
+    public Categoria(String descripcion) {
+		this.descripcion=descripcion;
 		libros = new ArrayList<Libro>();
+	}
+	public Categoria(String string, Categoria parentCategoria) {
+		this.parentCategoria=parentCategoria;
 	}
 }

@@ -35,6 +35,8 @@ public class ControllerJpqlConsole {
 				model.addAttribute("queryResults", queryResults);
 			} catch (Exception e) {
 				model.addAttribute("exception", e);
+				System.out.println("aaaaa"+e.getLocalizedMessage());
+				
 			}
 		}
 		model.addAttribute("jpql", jpql);

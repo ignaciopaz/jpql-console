@@ -1,5 +1,6 @@
 package edu.utn.frro.ds.jpql.libros.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -10,7 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import lombok.Data;
 import lombok.ToString;
-@Data @ToString(includeFieldNames=true, exclude="libros")
+@ToString(includeFieldNames=true, exclude="libros")
 @Entity
 public class Editorial {
 	@Id @GeneratedValue
