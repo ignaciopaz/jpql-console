@@ -3,14 +3,13 @@ package edu.utn.frro.ds.jpql.controller;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
 
 import javax.persistence.EntityManager;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -20,8 +19,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class ControllerJpqlConsole {
 	@Autowired private EntityManager em;
-	
 	@RequestMapping("/jpql/console")
+	public String init(Model model) {
+		
+		String jpql="SELECT a FROM Autor a JOIN a.libros b WHERE UPPER(b.titulo) LIKE 'R%'";
+		model.addAttribute("results", null);
+		model.addAttribute("jpql", jpql);
+		
+		return "jpql/console";		
+	}
+	
+	@PostMapping("/jpql/console")
 	public String console(@RequestParam(value="jpql", required=false, defaultValue="") String jpql, Model model) {
 		model.addAttribute("results", null);
 		if (jpql != null && !jpql.isEmpty() && jpql.toUpperCase().startsWith("SELECT")) {
@@ -35,10 +43,10 @@ public class ControllerJpqlConsole {
 				model.addAttribute("queryResults", queryResults);
 			} catch (Exception e) {
 				model.addAttribute("exception", e);
-				System.out.println("aaaaa"+e.getLocalizedMessage());
 				
 			}
 		}
+		
 		model.addAttribute("jpql", jpql);
 		
 		return "jpql/console";		
