@@ -1,7 +1,7 @@
 # UTN FRRO - Asignatura: Diseño de Sistemas.
 # jpql-console
 Aplicación para hacer consultas JPQL sobre un modelo de clases existente.
-
+Online: https://jpql-console.herokuapp.com/jpql/console
 ## Correr la aplicación
 Para ejecutar la aplicación:
 1. Terminar cualquier aplicación que esté corriendo dentro de Eclipse.
